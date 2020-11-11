@@ -1,6 +1,9 @@
 import {NavLink} from "react-router-dom";
+import {MyContext} from '../../App';
+import {useContext} from 'react';
 
 export const Navbar = () => {
+  const {setIsLogged} = useContext(MyContext)
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -12,9 +15,8 @@ export const Navbar = () => {
         <ul className="navbar-nav mr-auto">
 
             <li className="nav-item">
-              <NavLink className="nav-link" to="/home">Home</NavLink>
+              <NavLink className="nav-link" exact to="/">Home</NavLink>
             </li>
-
 
             <li className="nav-item">
               <NavLink className="nav-link" to="/page1">page1</NavLink>
@@ -24,15 +26,16 @@ export const Navbar = () => {
               <NavLink className="nav-link" to="/page2">page2</NavLink>
             </li>
 
-          {/*<li className="nav-item">*/}
-          {/*  <NavLink*/}
-          {/*    className="nav-link"*/}
-          {/*    to="/login"*/}
-          {/*  >Выйти</NavLink>*/}
-          {/*</li>*/}
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                exact
+                to="/reset"
+                onClick={() => setIsLogged(false)}
+              >Reset</NavLink>
+            </li>
 
         </ul>
-
       </div>
     </nav>
   )
